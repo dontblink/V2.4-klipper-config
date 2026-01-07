@@ -1,0 +1,356 @@
+-------------------- Log Start | Mon Jan  5 08:02:41 2026 --------------------
+platform: Linux-6.12.47+rpt-rpi-v8-aarch64-with-glibc2.41
+data_path: /home/nirve/printer_data
+is_default_data_path: False
+config_file: /home/nirve/printer_data/config/moonraker.conf
+backup_config: /home/nirve/printer_data/config/.moonraker.conf.bkp
+startup_warnings: []
+verbose: False
+debug: False
+asyncio_debug: False
+is_backup_config: False
+is_python_package: False
+instance_uuid: df3243bb169f4e2c8e3a06feeb2e6063
+unix_socket_path: /home/nirve/printer_data/comms/moonraker.sock
+structured_logging: False
+software_version: v0.9.3-130-g5b92e52
+git_branch: master
+git_remote: origin
+git_repo_url: https://github.com/Arksine/moonraker
+modified_files: []
+unofficial_components: []
+log_file: /home/nirve/printer_data/logs/moonraker.log
+python_version: 3.13.5 (main, Jun 25 2025, 18:55:22) [GCC 14.2.0]
+launch_args: /home/nirve/moonraker-env/bin/python /home/nirve/moonraker/moonraker/moonraker.py -d /home/nirve/printer_data
+msgspec_enabled: True
+uvloop_enabled: True
+
+#################### Moonraker Configuration ####################
+
+[server]
+host = 0.0.0.0
+port = 7125
+klippy_uds_address = /home/nirve/printer_data/comms/klippy.sock
+
+[authorization]
+trusted_clients = 
+	192.168.0.0/16
+	10.0.0.0/8
+	127.0.0.0/8
+	169.254.0.0/16
+	172.16.0.0/12
+	192.168.0.0/16
+	FC00::/7
+	FE80::/10
+	::1/128
+cors_domains = 
+	*.lan
+	*.local
+	*://localhost
+	*://localhost:*
+	*://my.mainsail.xyz
+	*://app.fluidd.xyz
+
+[octoprint_compat]
+
+[history]
+
+[update_manager]
+channel = dev
+refresh_interval = 168
+
+[update_manager fluidd]
+path = /home/nirve/fluidd
+repo = fluidd-core/fluidd
+channel = stable
+type = web
+persistent_files = 
+	config.json
+
+#################################################################
+All Configuration Files:
+/home/nirve/printer_data/config/moonraker.conf
+#################################################################
+Loading Sqlite database provider. Sqlite Version: 3.46.1
+Unsafe Shutdown Count: 2
+
+System Info:
+
+***python***
+  version: (3, 13, 5, 'final', 0)
+  version_string: 3.13.5 (main, Jun 25 2025, 18:55:22) [GCC 14.2.0]
+
+***cpu_info***
+  cpu_count: 4
+  bits: 32bit
+  processor: aarch64
+  cpu_desc: 
+  serial_number: 10000000625d7f08
+  hardware_desc: 
+  model: Raspberry Pi Compute Module 4 Rev 1.1
+  total_memory: 1889932
+  memory_units: kB
+
+***sd_info***
+  manufacturer_id: 1b
+  manufacturer: Samsung
+  oem_id: 534d
+  product_name: GD4QT
+  product_revision: 3.0
+  serial_number: 51b15786
+  manufacturer_date: 2/2019
+  capacity: 119.2 GiB
+  total_bytes: 128043712512
+
+***distribution***
+  name: Raspbian GNU/Linux 13 (trixie)
+  id: raspbian
+  version: 13
+  version_parts: {'major': '13', 'minor': '', 'build_number': ''}
+  like: debian
+  codename: trixie
+  release_info: {}
+  kernel_version: 6.12.47+rpt-rpi-v8
+
+***virtualization***
+  virt_type: none
+  virt_identifier: none
+
+***network***
+
+***canbus***
+
+***Allowed Services***
+  klipper_mcu
+  webcamd
+  MoonCord
+  KlipperScreen
+  moonraker-telegram-bot
+  moonraker-obico
+  sonar
+  crowsnest
+  octoeverywhere
+  ratos-configurator
+Found libcamera Python module, version: v0.5.2+99-bfd68f78
+
+Systemd unit moonraker.service:
+unit_name: moonraker.service
+is_default: True
+manager: systemd
+Properties:
+**Requires=['network-online.target', 'sysinit.target', 'system.slice', '-.mount']
+**After=['sysinit.target', 'systemd-journald.socket', 'basic.target', 'network-online.target', 'system.slice', '-.mount']
+**SupplementaryGroups=['moonraker-admin']
+**EnvironmentFiles=/home/nirve/printer_data/systemd/moonraker.env
+**ExecStart=/home/nirve/moonraker-env/bin/python $MOONRAKER_ARGS
+**WorkingDirectory=/home/nirve/moonraker
+**FragmentPath=/etc/systemd/system/moonraker.service
+**Description=API Server for Klipper SV1
+**User=nirve
+
+Systemd unit klipper.service:
+unit_name: klipper.service
+is_default: True
+manager: systemd
+Properties:
+**Requires=['-.mount', 'sysinit.target', 'system.slice']
+**After=['basic.target', 'systemd-journald.socket', 'network-online.target', 'system.slice', '-.mount', 'sysinit.target']
+**SupplementaryGroups=[]
+**EnvironmentFiles=/home/nirve/printer_data/systemd/klipper.env
+**ExecStart=/home/nirve/klippy-env/bin/python $KLIPPER_ARGS
+**WorkingDirectory=/home/nirve/klipper
+**FragmentPath=/etc/systemd/system/klipper.service
+**Description=Klipper 3D Printer Firmware SV1
+**User=nirve
+Git Repo moonraker: No warnings detected
+Git Repo klipper: Warnings detected:
+  Repo has untracked source files: ['klippy/extras/adxl345_probe.py']
+Klipper Version: v0.13.0-454-ge60fe3d9-dirty
+2026-01-05 00:02:41,436 [application.py:prepare()] - Upload Request Received from 192.168.0.58
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundaryPLpu92Tfze1niNaI
+2026-01-05 00:02:41,445 [application.py:post()] - Processing Uploaded File: printer.cfg
+2026-01-05 00:02:41,451 [application.py:log_request()] - 201 POST /server/files/upload (192.168.0.58) [_TRUSTED_USER_] 16.19ms
+2026-01-05 00:02:42,317 [klippy_connection.py:_on_connection_closed()] - Klippy Connection Removed
+2026-01-05 00:02:42,342 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Host not connected
+2026-01-05 00:02:43,575 [klippy_connection.py:_do_connect()] - Klippy Connection Established
+2026-01-05 00:02:46,007 [klippy_connection.py:_request_initial_subscriptions()] - Webhooks Subscribed
+2026-01-05 00:02:46,008 [klippy_connection.py:_request_initial_subscriptions()] - GCode Output Subscribed
+2026-01-05 00:02:46,257 [job_state.py:_handle_started()] - Job state initialized: standby
+2026-01-05 00:02:46,514 [klippy_connection.py:_check_ready()] - Klippy ready
+2026-01-05 00:02:46,784 [file_manager.py:get_file_list()] - Updating File List <gcodes>...
+2026-01-05 00:02:47,009 [data_store.py:_init_sensors()] - Configuring available sensors: ['temperature_sensor MCU', 'temperature_sensor SoC', 'temperature_sensor Chamber', 'temperature_sensor toolhead_mcu_temp', 'temperature_sensor Extruder_Temp', 'temperature_sensor 5V_Monitor', 'temperature_sensor 24V_Monitor', 'heater_bed', 'extruder']
+2026-01-05 00:03:50,270 [klippy_connection.py:wait()] - Request 'gcode/script' pending: 60.00 seconds
+2026-01-05 00:05:16,844 [klippy_connection.py:wait()] - Request 'gcode/script' pending: 60.00 seconds
+2026-01-05 00:08:53,450 [application.py:prepare()] - Upload Request Received from 192.168.0.58
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundaryBQ3WqNtNDp7sJume
+2026-01-05 00:08:53,457 [application.py:post()] - Processing Uploaded File: homing.cfg
+2026-01-05 00:08:53,465 [application.py:log_request()] - 201 POST /server/files/upload (192.168.0.58) [_TRUSTED_USER_] 15.88ms
+2026-01-05 01:06:35,876 [authorization.py:_prune_conn_handler()] - Trusted Connection Expired, IP: 127.0.0.1
+2026-01-05 01:11:35,876 [authorization.py:_prune_conn_handler()] - Trusted Connection Expired, IP: 192.168.0.58
+2026-01-05 02:01:56,640 [websockets.py:write_to_socket()] - Websocket closed while writing: 4045820832
+2026-01-05 02:02:01,400 [websockets.py:on_close()] - Websocket Closed: ID: 4045820832 Close Code: None, Close Reason: None, Pong Time Elapsed: 45.00
+2026-01-05 02:30:22,578 [authorization.py:_check_trusted_connection()] - Trusted Connection Detected, IP: 192.168.0.58
+2026-01-05 02:30:22,726 [application.py:log_request()] - 101 GET /websocket?token=U3ZZOIBKXFHNLFANC2TCEPMJOYIT2ZIT (192.168.0.58) [_TRUSTED_USER_] 1.30ms
+2026-01-05 02:30:22,726 [websockets.py:open()] - Websocket Opened: ID: 4045822240, Proxied: True, User Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36 Edg/143.0.0.0, Host Name: v2.local
+2026-01-05 02:30:22,734 [websockets.py:_handle_identify()] - Websocket 4045822240 Client Identified - Name: fluidd, Version: 1.36.2-248f8a2, Type: web
+2026-01-05 02:30:22,735 [file_manager.py:get_file_list()] - Updating File List <config>...
+2026-01-05 02:30:47,543 [application.py:prepare()] - Upload Request Received from 192.168.0.58
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundaryPrJS9x2VmiFvHCws
+2026-01-05 02:30:47,560 [application.py:post()] - Processing Uploaded File: printer.cfg
+2026-01-05 02:30:47,573 [application.py:log_request()] - 201 POST /server/files/upload (192.168.0.58) [_TRUSTED_USER_] 31.59ms
+2026-01-05 02:30:48,439 [klippy_connection.py:_on_connection_closed()] - Klippy Connection Removed
+2026-01-05 02:30:48,465 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Host not connected
+2026-01-05 02:30:49,698 [klippy_connection.py:_do_connect()] - Klippy Connection Established
+2026-01-05 02:30:52,146 [klippy_connection.py:_request_initial_subscriptions()] - Webhooks Subscribed
+2026-01-05 02:30:52,147 [klippy_connection.py:_request_initial_subscriptions()] - GCode Output Subscribed
+2026-01-05 02:30:52,370 [authorization.py:_check_trusted_connection()] - Trusted Connection Detected, IP: 127.0.0.1
+2026-01-05 02:30:52,400 [job_state.py:_handle_started()] - Job state initialized: standby
+2026-01-05 02:30:52,655 [klippy_connection.py:_check_ready()] - Klippy ready
+2026-01-05 02:30:52,675 [file_manager.py:get_file_list()] - Updating File List <gcodes>...
+2026-01-05 02:30:53,149 [data_store.py:_init_sensors()] - Configuring available sensors: ['temperature_sensor MCU', 'temperature_sensor SoC', 'temperature_sensor Chamber', 'temperature_sensor toolhead_mcu_temp', 'temperature_sensor Extruder_Temp', 'temperature_sensor 5V_Monitor', 'temperature_sensor 24V_Monitor', 'heater_bed', 'extruder']
+2026-01-05 02:31:11,689 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.gcode.script, Code: 400, Message: Error evaluating 'gcode_macro _SetProbeState:gcode': gcode.CommandError: Probe attach failed!
+
+2026-01-05 02:33:32,395 [application.py:prepare()] - Upload Request Received from 192.168.0.58
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundaryziC7k1ZpML0yrQ9D
+2026-01-05 02:33:32,403 [application.py:post()] - Processing Uploaded File: printer.cfg
+2026-01-05 02:33:32,410 [application.py:log_request()] - 201 POST /server/files/upload (192.168.0.58) [_TRUSTED_USER_] 15.21ms
+2026-01-05 02:33:58,528 [application.py:prepare()] - Upload Request Received from 192.168.0.58
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundaryAZElNAtHe2JjbLVO
+2026-01-05 02:33:58,535 [application.py:post()] - Processing Uploaded File: homing.cfg
+2026-01-05 02:33:58,540 [application.py:log_request()] - 201 POST /server/files/upload (192.168.0.58) [_TRUSTED_USER_] 13.02ms
+2026-01-05 02:33:59,608 [klippy_connection.py:_on_connection_closed()] - Klippy Connection Removed
+2026-01-05 02:33:59,630 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Host not connected
+2026-01-05 02:34:00,861 [klippy_connection.py:_do_connect()] - Klippy Connection Established
+2026-01-05 02:34:03,313 [klippy_connection.py:_request_initial_subscriptions()] - Webhooks Subscribed
+2026-01-05 02:34:03,315 [klippy_connection.py:_request_initial_subscriptions()] - GCode Output Subscribed
+2026-01-05 02:34:03,564 [job_state.py:_handle_started()] - Job state initialized: standby
+2026-01-05 02:34:03,816 [klippy_connection.py:_check_ready()] - Klippy ready
+2026-01-05 02:34:04,318 [data_store.py:_init_sensors()] - Configuring available sensors: ['temperature_sensor MCU', 'temperature_sensor SoC', 'temperature_sensor Chamber', 'temperature_sensor toolhead_mcu_temp', 'temperature_sensor Extruder_Temp', 'temperature_sensor 5V_Monitor', 'temperature_sensor 24V_Monitor', 'heater_bed', 'extruder']
+2026-01-05 02:34:04,344 [file_manager.py:get_file_list()] - Updating File List <gcodes>...
+2026-01-05 02:34:43,910 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.gcode.script, Code: 400, Message: Error evaluating 'gcode_macro _SetProbeState:gcode': gcode.CommandError: Probe attach failed!
+
+2026-01-05 02:34:52,635 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.gcode.script, Code: 400, Message: Error evaluating 'gcode_macro _SetProbeState:gcode': gcode.CommandError: Probe attach failed!
+
+2026-01-05 02:35:01,004 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.gcode.script, Code: 400, Message: Error evaluating 'gcode_macro _SetProbeState:gcode': gcode.CommandError: Probe attach failed!
+
+2026-01-05 02:35:11,919 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.gcode.script, Code: 400, Message: Error evaluating 'gcode_macro _SetProbeState:gcode': gcode.CommandError: Probe attach failed!
+
+2026-01-05 02:35:51,368 [application.py:prepare()] - Upload Request Received from 192.168.0.58
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary8jhhQQUXAXDMkP2X
+2026-01-05 02:35:51,376 [application.py:post()] - Processing Uploaded File: homing.cfg
+2026-01-05 02:35:51,383 [application.py:log_request()] - 201 POST /server/files/upload (192.168.0.58) [_TRUSTED_USER_] 15.89ms
+2026-01-05 02:35:52,470 [klippy_connection.py:_on_connection_closed()] - Klippy Connection Removed
+2026-01-05 02:35:52,492 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Host not connected
+2026-01-05 02:35:53,726 [klippy_connection.py:_do_connect()] - Klippy Connection Established
+2026-01-05 02:35:56,225 [klippy_connection.py:_request_initial_subscriptions()] - Webhooks Subscribed
+2026-01-05 02:35:56,227 [klippy_connection.py:_request_initial_subscriptions()] - GCode Output Subscribed
+2026-01-05 02:35:56,477 [job_state.py:_handle_started()] - Job state initialized: standby
+2026-01-05 02:35:56,733 [klippy_connection.py:_check_ready()] - Klippy ready
+2026-01-05 02:35:56,753 [file_manager.py:get_file_list()] - Updating File List <gcodes>...
+2026-01-05 02:35:57,228 [data_store.py:_init_sensors()] - Configuring available sensors: ['temperature_sensor MCU', 'temperature_sensor SoC', 'temperature_sensor Chamber', 'temperature_sensor toolhead_mcu_temp', 'temperature_sensor Extruder_Temp', 'temperature_sensor 5V_Monitor', 'temperature_sensor 24V_Monitor', 'heater_bed', 'extruder']
+2026-01-05 02:36:30,266 [application.py:prepare()] - Upload Request Received from 192.168.0.58
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary5egWXfc82UQqXxzy
+2026-01-05 02:36:30,273 [application.py:post()] - Processing Uploaded File: homing.cfg
+2026-01-05 02:36:30,280 [application.py:log_request()] - 201 POST /server/files/upload (192.168.0.58) [_TRUSTED_USER_] 14.82ms
+2026-01-05 02:36:31,143 [klippy_connection.py:_on_connection_closed()] - Klippy Connection Removed
+2026-01-05 02:36:31,159 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Host not connected
+2026-01-05 02:36:32,398 [klippy_connection.py:_do_connect()] - Klippy Connection Established
+2026-01-05 02:36:34,852 [klippy_connection.py:_request_initial_subscriptions()] - Webhooks Subscribed
+2026-01-05 02:36:34,853 [klippy_connection.py:_request_initial_subscriptions()] - GCode Output Subscribed
+2026-01-05 02:36:35,102 [job_state.py:_handle_started()] - Job state initialized: standby
+2026-01-05 02:36:35,362 [klippy_connection.py:_check_ready()] - Klippy ready
+2026-01-05 02:36:35,865 [data_store.py:_init_sensors()] - Configuring available sensors: ['temperature_sensor MCU', 'temperature_sensor SoC', 'temperature_sensor Chamber', 'temperature_sensor toolhead_mcu_temp', 'temperature_sensor Extruder_Temp', 'temperature_sensor 5V_Monitor', 'temperature_sensor 24V_Monitor', 'heater_bed', 'extruder']
+2026-01-05 02:36:35,920 [file_manager.py:get_file_list()] - Updating File List <gcodes>...
+2026-01-05 02:36:47,479 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.gcode.script, Code: 400, Message: Error evaluating 'gcode_macro _SetProbeState:gcode': gcode.CommandError: Probe attach failed!
+
+2026-01-05 02:37:06,157 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.gcode.script, Code: 400, Message: Error evaluating 'gcode_macro _SetProbeState:gcode': gcode.CommandError: Probe attach failed!
+
+2026-01-05 02:37:44,703 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.gcode.script, Code: 400, Message: Error evaluating 'gcode_macro _SetProbeState:gcode': gcode.CommandError: Probe attach failed!
+
+2026-01-05 02:39:35,936 [klippy_connection.py:wait()] - Request 'gcode/script' pending: 60.00 seconds
+2026-01-05 02:39:38,002 [application.py:prepare()] - Upload Request Received from 192.168.0.58
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundaryTAuhQZP4z2rQJFso
+2026-01-05 02:39:38,010 [application.py:post()] - Processing Uploaded File: printer.cfg
+2026-01-05 02:39:38,016 [application.py:log_request()] - 201 POST /server/files/upload (192.168.0.58) [_TRUSTED_USER_] 14.75ms
+2026-01-05 02:40:13,065 [application.py:prepare()] - Upload Request Received from 192.168.0.58
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundarybOZAJUHbbTOIWKvQ
+2026-01-05 02:40:13,071 [application.py:post()] - Processing Uploaded File: homing.cfg
+2026-01-05 02:40:13,078 [application.py:log_request()] - 201 POST /server/files/upload (192.168.0.58) [_TRUSTED_USER_] 13.52ms
+2026-01-05 02:40:14,142 [klippy_connection.py:_on_connection_closed()] - Klippy Connection Removed
+2026-01-05 02:40:14,166 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Host not connected
+2026-01-05 02:40:15,398 [klippy_connection.py:_do_connect()] - Klippy Connection Established
+2026-01-05 02:40:17,894 [klippy_connection.py:_request_initial_subscriptions()] - Webhooks Subscribed
+2026-01-05 02:40:17,895 [klippy_connection.py:_request_initial_subscriptions()] - GCode Output Subscribed
+2026-01-05 02:40:18,145 [job_state.py:_handle_started()] - Job state initialized: standby
+2026-01-05 02:40:18,401 [klippy_connection.py:_check_ready()] - Klippy ready
+2026-01-05 02:40:18,669 [file_manager.py:get_file_list()] - Updating File List <gcodes>...
+2026-01-05 02:40:18,897 [data_store.py:_init_sensors()] - Configuring available sensors: ['temperature_sensor MCU', 'temperature_sensor SoC', 'temperature_sensor Chamber', 'temperature_sensor toolhead_mcu_temp', 'temperature_sensor Extruder_Temp', 'temperature_sensor 5V_Monitor', 'temperature_sensor 24V_Monitor', 'heater_bed', 'extruder']
+2026-01-05 02:42:44,295 [klippy_connection.py:wait()] - Request 'gcode/script' pending: 60.00 seconds
+2026-01-05 02:58:37,104 [websockets.py:on_close()] - Websocket Closed: ID: 4045822240 Close Code: None, Close Reason: None, Pong Time Elapsed: 4.26
+2026-01-05 03:25:15,406 [application.py:log_request()] - 101 GET /websocket?token=ZV4PWR4IGZTHKU244JQMTKDXBYYA4BXF (192.168.0.58) [_TRUSTED_USER_] 1.61ms
+2026-01-05 03:25:15,406 [websockets.py:open()] - Websocket Opened: ID: 4045822064, Proxied: True, User Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36 Edg/143.0.0.0, Host Name: v2.local
+2026-01-05 03:25:15,476 [websockets.py:_handle_identify()] - Websocket 4045822064 Client Identified - Name: fluidd, Version: 1.36.2-248f8a2, Type: web
+2026-01-05 03:25:15,476 [file_manager.py:get_file_list()] - Updating File List <config>...
+2026-01-05 03:26:35,638 [websockets.py:write_to_socket()] - Websocket closed while writing: 4045822064
+2026-01-05 03:26:40,410 [websockets.py:on_close()] - Websocket Closed: ID: 4045822064 Close Code: None, Close Reason: None, Pong Time Elapsed: 45.00
+2026-01-05 03:41:35,885 [authorization.py:_prune_conn_handler()] - Trusted Connection Expired, IP: 127.0.0.1
+2026-01-05 04:26:35,889 [authorization.py:_prune_conn_handler()] - Trusted Connection Expired, IP: 192.168.0.58
+2026-01-05 18:45:53,392 [authorization.py:_check_trusted_connection()] - Trusted Connection Detected, IP: 192.168.0.58
+2026-01-05 18:45:53,558 [application.py:log_request()] - 101 GET /websocket?token=LGPXUCU4UAGQKFIQP6HCRP3FYZWXPRAZ (192.168.0.58) [_TRUSTED_USER_] 1.34ms
+2026-01-05 18:45:53,558 [websockets.py:open()] - Websocket Opened: ID: 4007827216, Proxied: True, User Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36 Edg/143.0.0.0, Host Name: v2.local
+2026-01-05 18:45:53,570 [websockets.py:_handle_identify()] - Websocket 4007827216 Client Identified - Name: fluidd, Version: 1.36.2-248f8a2, Type: web
+2026-01-05 18:45:53,570 [file_manager.py:get_file_list()] - Updating File List <config>...
+2026-01-05 18:48:00,901 [klippy_connection.py:wait()] - Request 'gcode/script' pending: 60.00 seconds
+2026-01-05 18:53:34,424 [application.py:prepare()] - Upload Request Received from 192.168.0.58
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundaryX6HUgqKkWPNtwBl6
+2026-01-05 18:53:34,441 [application.py:post()] - Processing Uploaded File: printer.cfg
+2026-01-05 18:53:34,455 [application.py:log_request()] - 201 POST /server/files/upload (192.168.0.58) [_TRUSTED_USER_] 32.49ms
+2026-01-05 18:53:35,524 [klippy_connection.py:_on_connection_closed()] - Klippy Connection Removed
+2026-01-05 18:53:35,546 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Host not connected
+2026-01-05 18:53:36,783 [klippy_connection.py:_do_connect()] - Klippy Connection Established
+2026-01-05 18:53:39,489 [klippy_connection.py:_request_initial_subscriptions()] - Webhooks Subscribed
+2026-01-05 18:53:39,491 [klippy_connection.py:_request_initial_subscriptions()] - GCode Output Subscribed
+2026-01-05 18:53:39,741 [job_state.py:_handle_started()] - Job state initialized: standby
+2026-01-05 18:53:39,992 [klippy_connection.py:_check_ready()] - Klippy ready
+2026-01-05 18:53:39,998 [authorization.py:_check_trusted_connection()] - Trusted Connection Detected, IP: 127.0.0.1
+2026-01-05 18:53:40,496 [data_store.py:_init_sensors()] - Configuring available sensors: ['temperature_sensor MCU', 'temperature_sensor SoC', 'temperature_sensor Chamber', 'temperature_sensor toolhead_mcu_temp', 'temperature_sensor Extruder_Temp', 'temperature_sensor 5V_Monitor', 'temperature_sensor 24V_Monitor', 'heater_bed', 'extruder']
+2026-01-05 18:53:41,054 [file_manager.py:get_file_list()] - Updating File List <gcodes>...
+2026-01-05 18:53:44,071 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.gcode.script, Code: 400, Message: Error evaluating 'gcode_macro PRINT_START:gcode': jinja2.exceptions.UndefinedError: 'dict object' has no attribute 'BED'
+
+2026-01-05 18:54:23,861 [application.py:prepare()] - Upload Request Received from 192.168.0.58
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundaryUtzyrGYi93gfFaTa
+2026-01-05 18:54:23,871 [application.py:post()] - Processing Uploaded File: printer.cfg
+2026-01-05 18:54:23,878 [application.py:log_request()] - 201 POST /server/files/upload (192.168.0.58) [_TRUSTED_USER_] 17.65ms
+2026-01-05 19:02:13,534 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.gcode.script, Code: 400, Message: Error evaluating 'gcode_macro _SetProbeState:gcode': gcode.CommandError: Probe attach failed!
+
+2026-01-05 19:11:53,963 [klippy_connection.py:wait()] - Request 'gcode/script' pending: 60.00 seconds
+2026-01-05 19:56:35,959 [authorization.py:_prune_conn_handler()] - Trusted Connection Expired, IP: 192.168.0.58
+2026-01-05 19:56:35,959 [authorization.py:_prune_conn_handler()] - Trusted Connection Expired, IP: 127.0.0.1
+2026-01-05 20:44:14,124 [websockets.py:write_to_socket()] - Websocket closed while writing: 4007827216
+2026-01-05 20:44:19,044 [websockets.py:on_close()] - Websocket Closed: ID: 4007827216 Close Code: None, Close Reason: None, Pong Time Elapsed: 44.99
+2026-01-05 20:46:44,848 [authorization.py:_check_trusted_connection()] - Trusted Connection Detected, IP: 192.168.0.58
+2026-01-05 20:46:44,871 [application.py:log_request()] - 101 GET /websocket?token=IQVHTBRASLBWTCDX33KYQ2JS5YGXIU5T (192.168.0.58) [_TRUSTED_USER_] 2.42ms
+2026-01-05 20:46:44,872 [websockets.py:open()] - Websocket Opened: ID: 4045822064, Proxied: True, User Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36 Edg/143.0.0.0, Host Name: v2.local
+2026-01-05 20:46:44,877 [websockets.py:_handle_identify()] - Websocket 4045822064 Client Identified - Name: fluidd, Version: 1.36.2-248f8a2, Type: web
+2026-01-05 20:46:44,878 [file_manager.py:get_file_list()] - Updating File List <config>...
+2026-01-05 20:56:44,593 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.gcode.script, Code: 400, Message: Error evaluating 'gcode_macro _SetProbeState:gcode': gcode.CommandError: Probe attach failed!
+
+2026-01-05 20:56:57,038 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.gcode.script, Code: 400, Message: Error evaluating 'gcode_macro _SetProbeState:gcode': gcode.CommandError: Probe attach failed!
+
+2026-01-05 20:57:02,040 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.gcode.script, Code: 400, Message: Move out of range: 118.000 335.000 30.030 [0.000]
+2026-01-05 20:57:04,108 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.gcode.script, Code: 400, Message: Move out of range: 118.000 335.000 30.030 [0.000]
+2026-01-05 20:57:04,396 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.gcode.script, Code: 400, Message: Move out of range: 118.000 335.000 30.030 [0.000]
+2026-01-05 20:57:04,771 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.gcode.script, Code: 400, Message: Move out of range: 118.000 335.000 30.030 [0.000]
+2026-01-05 20:57:30,144 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.gcode.script, Code: 400, Message: Error evaluating 'gcode_macro _SetProbeState:gcode': gcode.CommandError: Probe attach failed!
+
+2026-01-05 20:57:37,352 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.gcode.script, Code: 400, Message: Move out of range: 118.000 234.000 -69.956 [0.000]
+2026-01-05 20:57:44,778 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.gcode.script, Code: 400, Message: Move out of range: 118.000 334.000 30.030 [0.000]
+2026-01-05 20:57:49,233 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.gcode.script, Code: 400, Message: Move out of range: 118.000 284.000 30.030 [0.000]
+2026-01-05 20:59:34,393 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.gcode.script, Code: 400, Message: Move out of range: 168.000 -16.000 30.030 [0.000]
+2026-01-05 20:59:34,585 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.gcode.script, Code: 400, Message: Move out of range: 168.000 -16.000 30.030 [0.000]
+2026-01-05 20:59:34,802 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.gcode.script, Code: 400, Message: Move out of range: 168.000 -16.000 30.030 [0.000]
+2026-01-05 20:59:36,414 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.gcode.script, Code: 400, Message: Move out of range: 168.000 -16.000 30.030 [0.000]
+2026-01-05 21:35:27,284 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.gcode.script, Code: 400, Message: Move out of range: 118.000 -16.000 80.030 [0.000]
+2026-01-05 21:51:35,970 [authorization.py:_prune_conn_handler()] - Trusted Connection Expired, IP: 192.168.0.58
+2026-01-05 22:49:04,478 [authorization.py:_check_trusted_connection()] - Trusted Connection Detected, IP: 192.168.0.58
+2026-01-05 23:51:35,983 [authorization.py:_prune_conn_handler()] - Trusted Connection Expired, IP: 192.168.0.58

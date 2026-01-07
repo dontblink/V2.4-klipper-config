@@ -1,0 +1,230 @@
+-------------------- Log Start | Tue Jan  6 08:20:33 2026 --------------------
+platform: Linux-6.12.47+rpt-rpi-v8-aarch64-with-glibc2.41
+data_path: /home/nirve/printer_data
+is_default_data_path: False
+config_file: /home/nirve/printer_data/config/moonraker.conf
+backup_config: /home/nirve/printer_data/config/.moonraker.conf.bkp
+startup_warnings: []
+verbose: False
+debug: False
+asyncio_debug: False
+is_backup_config: False
+is_python_package: False
+instance_uuid: df3243bb169f4e2c8e3a06feeb2e6063
+unix_socket_path: /home/nirve/printer_data/comms/moonraker.sock
+structured_logging: False
+software_version: v0.9.3-130-g5b92e52
+git_branch: master
+git_remote: origin
+git_repo_url: https://github.com/Arksine/moonraker
+modified_files: []
+unofficial_components: []
+log_file: /home/nirve/printer_data/logs/moonraker.log
+python_version: 3.13.5 (main, Jun 25 2025, 18:55:22) [GCC 14.2.0]
+launch_args: /home/nirve/moonraker-env/bin/python /home/nirve/moonraker/moonraker/moonraker.py -d /home/nirve/printer_data
+msgspec_enabled: True
+uvloop_enabled: True
+
+#################### Moonraker Configuration ####################
+
+[server]
+host = 0.0.0.0
+port = 7125
+klippy_uds_address = /home/nirve/printer_data/comms/klippy.sock
+
+[authorization]
+trusted_clients = 
+	192.168.0.0/16
+	10.0.0.0/8
+	127.0.0.0/8
+	169.254.0.0/16
+	172.16.0.0/12
+	192.168.0.0/16
+	FC00::/7
+	FE80::/10
+	::1/128
+cors_domains = 
+	*.lan
+	*.local
+	*://localhost
+	*://localhost:*
+	*://my.mainsail.xyz
+	*://app.fluidd.xyz
+
+[octoprint_compat]
+
+[history]
+
+[update_manager]
+channel = dev
+refresh_interval = 168
+
+[update_manager fluidd]
+path = /home/nirve/fluidd
+repo = fluidd-core/fluidd
+channel = stable
+type = web
+persistent_files = 
+	config.json
+
+#################################################################
+All Configuration Files:
+/home/nirve/printer_data/config/moonraker.conf
+#################################################################
+Loading Sqlite database provider. Sqlite Version: 3.46.1
+Unsafe Shutdown Count: 2
+
+System Info:
+
+***python***
+  version: (3, 13, 5, 'final', 0)
+  version_string: 3.13.5 (main, Jun 25 2025, 18:55:22) [GCC 14.2.0]
+
+***cpu_info***
+  cpu_count: 4
+  bits: 32bit
+  processor: aarch64
+  cpu_desc: 
+  serial_number: 10000000625d7f08
+  hardware_desc: 
+  model: Raspberry Pi Compute Module 4 Rev 1.1
+  total_memory: 1889932
+  memory_units: kB
+
+***sd_info***
+  manufacturer_id: 1b
+  manufacturer: Samsung
+  oem_id: 534d
+  product_name: GD4QT
+  product_revision: 3.0
+  serial_number: 51b15786
+  manufacturer_date: 2/2019
+  capacity: 119.2 GiB
+  total_bytes: 128043712512
+
+***distribution***
+  name: Raspbian GNU/Linux 13 (trixie)
+  id: raspbian
+  version: 13
+  version_parts: {'major': '13', 'minor': '', 'build_number': ''}
+  like: debian
+  codename: trixie
+  release_info: {}
+  kernel_version: 6.12.47+rpt-rpi-v8
+
+***virtualization***
+  virt_type: none
+  virt_identifier: none
+
+***network***
+
+***canbus***
+
+***Allowed Services***
+  klipper_mcu
+  webcamd
+  MoonCord
+  KlipperScreen
+  moonraker-telegram-bot
+  moonraker-obico
+  sonar
+  crowsnest
+  octoeverywhere
+  ratos-configurator
+Found libcamera Python module, version: v0.5.2+99-bfd68f78
+
+Systemd unit moonraker.service:
+unit_name: moonraker.service
+is_default: True
+manager: systemd
+Properties:
+**Requires=['network-online.target', 'sysinit.target', 'system.slice', '-.mount']
+**After=['sysinit.target', 'systemd-journald.socket', 'basic.target', 'network-online.target', 'system.slice', '-.mount']
+**SupplementaryGroups=['moonraker-admin']
+**EnvironmentFiles=/home/nirve/printer_data/systemd/moonraker.env
+**ExecStart=/home/nirve/moonraker-env/bin/python $MOONRAKER_ARGS
+**WorkingDirectory=/home/nirve/moonraker
+**FragmentPath=/etc/systemd/system/moonraker.service
+**Description=API Server for Klipper SV1
+**User=nirve
+
+Systemd unit klipper.service:
+unit_name: klipper.service
+is_default: True
+manager: systemd
+Properties:
+**Requires=['-.mount', 'sysinit.target', 'system.slice']
+**After=['basic.target', 'systemd-journald.socket', 'network-online.target', 'system.slice', '-.mount', 'sysinit.target']
+**SupplementaryGroups=[]
+**EnvironmentFiles=/home/nirve/printer_data/systemd/klipper.env
+**ExecStart=/home/nirve/klippy-env/bin/python $KLIPPER_ARGS
+**WorkingDirectory=/home/nirve/klipper
+**FragmentPath=/etc/systemd/system/klipper.service
+**Description=Klipper 3D Printer Firmware SV1
+**User=nirve
+Git Repo moonraker: No warnings detected
+Git Repo klipper: Warnings detected:
+  Repo has untracked source files: ['klippy/extras/adxl345_probe.py']
+Klipper Version: v0.13.0-454-ge60fe3d9-dirty
+2026-01-06 00:20:33,309 [authorization.py:_check_trusted_connection()] - Trusted Connection Detected, IP: 192.168.0.58
+2026-01-06 00:20:33,310 [application.py:prepare()] - Upload Request Received from 192.168.0.58
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundaryUBV74lgkZbF85PMc
+2026-01-06 00:20:33,327 [application.py:post()] - Processing Uploaded File: printer.cfg
+2026-01-06 00:20:33,338 [application.py:log_request()] - 201 POST /server/files/upload (192.168.0.58) [_TRUSTED_USER_] 30.39ms
+2026-01-06 00:20:34,206 [klippy_connection.py:_on_connection_closed()] - Klippy Connection Removed
+2026-01-06 00:20:34,231 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Host not connected
+2026-01-06 00:20:35,462 [klippy_connection.py:_do_connect()] - Klippy Connection Established
+2026-01-06 00:20:37,920 [klippy_connection.py:_request_initial_subscriptions()] - Webhooks Subscribed
+2026-01-06 00:20:37,922 [klippy_connection.py:_request_initial_subscriptions()] - GCode Output Subscribed
+2026-01-06 00:20:38,171 [job_state.py:_handle_started()] - Job state initialized: standby
+2026-01-06 00:20:38,369 [authorization.py:_check_trusted_connection()] - Trusted Connection Detected, IP: 127.0.0.1
+2026-01-06 00:20:38,429 [klippy_connection.py:_check_ready()] - Klippy ready
+2026-01-06 00:20:38,696 [file_manager.py:get_file_list()] - Updating File List <gcodes>...
+2026-01-06 00:20:38,923 [data_store.py:_init_sensors()] - Configuring available sensors: ['temperature_sensor MCU', 'temperature_sensor SoC', 'temperature_sensor Chamber', 'temperature_sensor toolhead_mcu_temp', 'temperature_sensor Extruder_Temp', 'temperature_sensor 5V_Monitor', 'temperature_sensor 24V_Monitor', 'heater_bed', 'extruder']
+2026-01-06 00:22:06,458 [application.py:prepare()] - Upload Request Received from 192.168.0.58
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundaryIpgGWeBKUDAGmbFn
+2026-01-06 00:22:06,467 [application.py:post()] - Processing Uploaded File: printer.cfg
+2026-01-06 00:22:06,475 [application.py:log_request()] - 201 POST /server/files/upload (192.168.0.58) [_TRUSTED_USER_] 17.10ms
+2026-01-06 00:22:07,539 [klippy_connection.py:_on_connection_closed()] - Klippy Connection Removed
+2026-01-06 00:22:07,557 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Host not connected
+2026-01-06 00:22:08,795 [klippy_connection.py:_do_connect()] - Klippy Connection Established
+2026-01-06 00:22:11,308 [klippy_connection.py:_request_initial_subscriptions()] - Webhooks Subscribed
+2026-01-06 00:22:11,311 [klippy_connection.py:_request_initial_subscriptions()] - GCode Output Subscribed
+2026-01-06 00:22:11,557 [job_state.py:_handle_started()] - Job state initialized: standby
+2026-01-06 00:22:11,810 [klippy_connection.py:_check_ready()] - Klippy ready
+2026-01-06 00:22:12,311 [data_store.py:_init_sensors()] - Configuring available sensors: ['temperature_sensor MCU', 'temperature_sensor SoC', 'temperature_sensor Chamber', 'temperature_sensor toolhead_mcu_temp', 'temperature_sensor Extruder_Temp', 'temperature_sensor 5V_Monitor', 'temperature_sensor 24V_Monitor', 'heater_bed', 'extruder']
+2026-01-06 00:22:12,338 [file_manager.py:get_file_list()] - Updating File List <gcodes>...
+2026-01-06 00:56:37,356 [application.py:prepare()] - Upload Request Received from 192.168.0.58
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary6fEUSWxJDpmrvQBX
+2026-01-06 00:56:37,363 [application.py:post()] - Processing Uploaded File: filament.cfg
+2026-01-06 00:56:37,369 [application.py:log_request()] - 201 POST /server/files/upload (192.168.0.58) [_TRUSTED_USER_] 13.33ms
+2026-01-06 01:26:35,992 [authorization.py:_prune_conn_handler()] - Trusted Connection Expired, IP: 127.0.0.1
+2026-01-06 02:11:35,997 [authorization.py:_prune_conn_handler()] - Trusted Connection Expired, IP: 192.168.0.58
+2026-01-06 02:14:36,142 [websockets.py:write_to_socket()] - Websocket closed while writing: 4045822064
+2026-01-06 02:14:41,073 [websockets.py:on_close()] - Websocket Closed: ID: 4045822064 Close Code: None, Close Reason: None, Pong Time Elapsed: 45.00
+2026-01-06 10:36:46,006 [authorization.py:_check_trusted_connection()] - Trusted Connection Detected, IP: 192.168.0.58
+2026-01-06 10:36:46,097 [application.py:log_request()] - 101 GET /websocket?token=HQOZ6QA7LYXKOCDFUEBBAQXWBHOIGKVT (192.168.0.58) [_TRUSTED_USER_] 1.36ms
+2026-01-06 10:36:46,097 [websockets.py:open()] - Websocket Opened: ID: 4045691520, Proxied: True, User Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36 Edg/143.0.0.0, Host Name: v2.local
+2026-01-06 10:36:46,105 [websockets.py:_handle_identify()] - Websocket 4045691520 Client Identified - Name: fluidd, Version: 1.36.2-248f8a2, Type: web
+2026-01-06 10:36:46,106 [file_manager.py:get_file_list()] - Updating File List <config>...
+2026-01-06 11:29:49,797 [websockets.py:on_close()] - Websocket Closed: ID: 4045691520 Close Code: 1001, Close Reason: None, Pong Time Elapsed: 23.51
+2026-01-06 11:41:36,036 [authorization.py:_prune_conn_handler()] - Trusted Connection Expired, IP: 192.168.0.58
+2026-01-06 17:41:45,571 [authorization.py:_check_trusted_connection()] - Trusted Connection Detected, IP: 192.168.0.58
+2026-01-06 17:41:45,696 [application.py:log_request()] - 101 GET /websocket?token=FWJKZIVN3OZDPZQ4VL5UYLSLZQKTE2FC (192.168.0.58) [_TRUSTED_USER_] 1.41ms
+2026-01-06 17:41:45,696 [websockets.py:open()] - Websocket Opened: ID: 4045856992, Proxied: True, User Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36 Edg/143.0.0.0, Host Name: v2.local
+2026-01-06 17:41:45,702 [websockets.py:_handle_identify()] - Websocket 4045856992 Client Identified - Name: fluidd, Version: 1.36.2-248f8a2, Type: web
+2026-01-06 17:41:45,702 [file_manager.py:get_file_list()] - Updating File List <config>...
+2026-01-06 17:41:58,204 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.gcode.script, Code: 400, Message: Error evaluating 'gcode_macro _SetProbeState:gcode': gcode.CommandError: Probe attach failed!
+
+2026-01-06 17:43:03,647 [application.py:prepare()] - Upload Request Received from 192.168.0.58
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary6B97z0KFazxVceHB
+2026-01-06 17:43:03,655 [application.py:post()] - Processing Uploaded File: printer.cfg
+2026-01-06 17:43:03,662 [application.py:log_request()] - 201 POST /server/files/upload (192.168.0.58) [_TRUSTED_USER_] 15.01ms
+2026-01-06 17:43:25,169 [application.py:prepare()] - Upload Request Received from 192.168.0.58
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundaryI4VjkD5e8YoPAAAr
+2026-01-06 17:43:25,177 [application.py:post()] - Processing Uploaded File: macros.cfg
+2026-01-06 17:43:25,183 [application.py:log_request()] - 201 POST /server/files/upload (192.168.0.58) [_TRUSTED_USER_] 14.87ms
+2026-01-06 17:44:39,283 [application.py:prepare()] - Upload Request Received from 192.168.0.58
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundaryVsvEsiBrnWTdwzLv
+2026-01-06 17:44:39,290 [application.py:post()] - Processing Uploaded File: macros.cfg
+2026-01-06 17:44:39,297 [application.py:log_request()] - 201 POST /server/files/upload (192.168.0.58) [_TRUSTED_USER_] 15.07ms
