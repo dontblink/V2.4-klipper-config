@@ -2,3 +2,4 @@ logs/KlipperScreen.log
 logs/klippy.log
 logs/moonraker.log
 logs/*
+config/.moonraker.conf.bkp
