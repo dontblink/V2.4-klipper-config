@@ -3,5 +3,5 @@ logs/klippy.log
 logs/moonraker.log
 logs/*
 config/.moonraker.conf.bkp
-ShakeTune_results/*
+config/ShakeTune_results/*
 gcodes/*
