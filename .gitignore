@@ -5,3 +5,4 @@ logs/*
 config/.moonraker.conf.bkp
 config/ShakeTune_results/*
 gcodes/*
+printer-*
